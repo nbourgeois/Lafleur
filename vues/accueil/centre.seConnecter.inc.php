@@ -10,7 +10,7 @@
     </fieldset>
 </form>
 <?php
-if (isset($this->message)) {
-    echo "<strong>".$this->message."</strong>";
+if (! is_null($this->lire('message'))) {
+    echo "<strong>".$this->lire('message')."</strong>";
 }
 ?>

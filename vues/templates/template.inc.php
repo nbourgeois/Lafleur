@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="fr">
     <head>
-        <meta  content="text/html;charset=UTF-8" />
+        <meta charset="UTF-8" />
         <link rel="stylesheet" href="../vues/css/styleLargeurFixe.css" />
         <title><?php echo $this->lire('titreVue'); ?></title>
     </head>
