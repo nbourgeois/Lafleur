@@ -3,7 +3,7 @@
 class C_Produit extends Controleur {
 
     function afficherTous() {
-        $this->vue->loginAuthentification = MaSession::get('login');
+        $this->vue->loginAuthentification = Session::getAuth('login');
         $this->vue->titreVue = "LAFLEUR : Produits";
 
         $this->vue->entete = "../vues/templates/entete.inc.php";
@@ -14,7 +14,7 @@ class C_Produit extends Controleur {
 
         $this->vue->pied = "../vues/templates/pied.inc.php";
 
-        if (MaSession::estAuthentifie(array('login'))) {
+        if (Session::estAuthentifie(array('login'))) {
             $lesProduits = new M_ListeProduits();
             $this->vue->listeProduits = $lesProduits->getAll();
             $this->vue->centre = "../vues/produit/templates/centreListe.inc.php";
@@ -27,7 +27,7 @@ class C_Produit extends Controleur {
     }
 
     function afficherUneCateg() {
-        $this->vue->loginAuthentification = MaSession::get('login');
+        $this->vue->loginAuthentification = Session::getAuth('login');
         $this->vue->titreVue = "LAFLEUR : Produits par catégorie";
 
         $this->vue->entete = "../vues/templates/entete.inc.php";
@@ -38,7 +38,7 @@ class C_Produit extends Controleur {
 
         $this->vue->pied = "../vues/templates/pied.inc.php";
 
-        if (MaSession::estAuthentifie(array('login'))) {
+        if (Session::estAuthentifie(array('login'))) {
             $lesProduits = new M_ListeProduits();
             $id = getRequest("id", "bul");
             // récupérer le libellé de la catégorie de produits

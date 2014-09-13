@@ -1,20 +1,20 @@
 <?php
-include_once ("../includes/fonctions.inc.php");
-include_once ("../includes/version.inc.php");
-//recherche du nom du controleur
-$nomControleur= getRequest("controleur", "accueil");
+// inclusions globales
+include_once ("../includes/version.inc.php");           // données de version
+include_once ("../includes/fonctions.inc.php");         // autoload, getParametre, getNomClasse...
+include_once ("../includes/parametresSGBD.inc.php");    // paramètres d'accès à la BD
 
-//recherche du nom de l'action
-$action= getRequest("action", "index");
 
-//creation de l'instance de la vue
-$vue=new Vue($nomControleur,$action);
 
+//recherche du nom du controleur 'accueil' par défaut
+$nomControleur= getParametre('controleur', 'accueil');
+//recherche du nom de l'action 'defaut' par défaut
+$action= getParametre('action', 'defaut');
+
+// Formation du nom du contrôleur
 $nomClasseControleur= getNomClasse('C',$nomControleur); 
-//creation de l'instance de controleur
+// Instanciation du controleur
 $objetControleur=new $nomClasseControleur();
-$objetControleur->setVue($vue);
+
+// Déclenchement de l'action
 $objetControleur->$action();
-
-
-

@@ -5,7 +5,7 @@ class C_Accueil extends C_ControleurGenerique {
     function index() {
         $lesCategories = new M_ListeCategories();
         $this->vue->listeCateg = $lesCategories->getAll();
-        $this->vue->loginAuthentification = MaSession::get('login');
+        $this->vue->loginAuthentification = Session::getAuth('login');
         $this->vue->titreVue = "LAFLEUR : Accueil";
 
         $this->vue->entete = "../vues/templates/entete.inc.php";
@@ -20,7 +20,7 @@ class C_Accueil extends C_ControleurGenerique {
     function seConnecter() {
         $lesCategories = new M_ListeCategories();
         $this->vue->listeCateg = $lesCategories->getAll();
-        $this->vue->loginAuthentification = MaSession::get('login');
+        $this->vue->loginAuthentification = Session::getAuth('login');
         $this->vue->titreVue = "LAFLEUR : Accueil";
 
         $this->vue->entete = "../vues/templates/entete.inc.php";
@@ -52,7 +52,7 @@ class C_Accueil extends C_ControleurGenerique {
             $mdp = $_POST['mdp'];
             if ($lesClients->verifierLogin($login, $mdp)) {
                 // Si le login et le mot de passe sont valides, ouvrir une nouvelle session
-                MaSession::nouvelle(array('login' => $login)); // service minimum
+                Session::authentifier(array('login' => $login)); // service minimum
                 $this->vue->message = "Authentification réussie";
                 $this->vue->centre = "../vues/accueil/templates/centre.inc.php";
             } else {
@@ -65,12 +65,12 @@ class C_Accueil extends C_ControleurGenerique {
         }
         //------------------------------------------------------------------------
 
-        $this->vue->loginAuthentification = MaSession::get('login');
+        $this->vue->loginAuthentification = Session::getAuth('login');
         $this->vue->afficher();
     }
 
     function seDeconnecter() {
-        MaSession::fermer();
+        Session::finAuthentification();
         header("Location:  index.php");
     }
 

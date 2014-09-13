@@ -1,16 +1,16 @@
 <?php
 
-interface ISession {
+interface IAuthentifiable {
 
     // mettre fin à la session authentifiée
-    static function fermer() ;
+    static function finAuthentification() ;
 
     /** ouvrir une nouvelle session authentifiée :
      *   - générer un nouvel identifiant de session
      *   - enregistrer la ou les donnée(s) de session fournies en paramètre
      * @param array() $lesDonneesSession : tableau associatif contenant les données à inscrire en session
      */    
-    static function nouvelle($lesDonneesSession);
+    static function authentifier($lesDonneesSession);
     
     /**
      * Vérifie qu'une session est en cours
@@ -18,6 +18,20 @@ interface ISession {
      * @return boolean =true si la session est bien en cours ; =false sinon
      */
     static function estAuthentifie($lesDonneesSession);
+    
+    /**
+     * lit une donnée d'authentification sur la session
+     * @param string $nomDonnee
+     * @return string valeur de la donnée si elle existe, NULL sinon
+     */
+    static function getAuth($nomDonnee);
+    
+    /**
+     * enregistre une donnée d'authentification sur la session
+     * @param string $nomDonnee
+     * @param string $valeur
+     */
+    static function setAuth($nomDonnee, $valeur) ;
 
 }
 
