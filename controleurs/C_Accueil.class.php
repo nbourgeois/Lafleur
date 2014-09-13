@@ -14,7 +14,7 @@ class C_Accueil extends C_ControleurGenerique {
         $daoCateg->deconnecter();
         $this->vue->ajouter('loginAuthentification',Session::getAuth('login'));
         $this->vue->ajouter('titreVue',"LAFLEUR : Accueil");
-        $this->vue->ajouter('centre',"../vues/accueil/centre.inc.php");
+        $this->vue->ajouter('centre',"../vues/includes/accueil/centre.inc.php");
 
         $this->vue->afficher();
     }
@@ -27,7 +27,7 @@ class C_Accueil extends C_ControleurGenerique {
         $daoCateg->deconnecter();
         $this->vue->ajouter('loginAuthentification',Session::getAuth('login'));
         $this->vue->ajouter('titreVue',"LAFLEUR : Accueil");
-        $this->vue->ajouter('centre',"../vues/accueil/centre.seConnecter.inc.php");
+        $this->vue->ajouter('centre',"../vues/includes/accueil/centre.seConnecter.inc.php");
 
         $this->vue->afficher();
     }
@@ -53,14 +53,14 @@ class C_Accueil extends C_ControleurGenerique {
                 // Si le login et le mot de passe sont valides, ouvrir une nouvelle session
                 Session::authentifier(array('login' => $login)); // service minimum
                 $this->vue->ajouter('message',"Authentification réussie");
-                $this->vue->ajouter('centre',"../vues/accueil/centre.inc.php");
+                $this->vue->ajouter('centre',"../vues/includes/accueil/centre.inc.php");
             } else {
                 $this->vue->ajouter('message',"ECHEC d'identification : login ou mot de passe inconnus ");
-                $this->vue->ajouter('centre',"../vues/accueil/centre.seConnecter.inc.php");
+                $this->vue->ajouter('centre',"../vues/includes/accueil/centre.seConnecter.inc.php");
             }
         } else {
             $this->vue->ajouter('message',"Attention : le login ou le mot de passe ne sont pas renseign&eacute;s");
-            $this->vue->ajouter('centre',"../vues/accueil/centre.seConnecter.inc.php");
+            $this->vue->ajouter('centre',"../vues/includes/accueil/centre.seConnecter.inc.php");
         }
         //------------------------------------------------------------------------
 
