@@ -9,9 +9,9 @@ class V_Vue {
         $this->fichier = $chemin;
         $this->donnees = array();
         // composants par défaut de la vue
-        ajouter('entete',"../vues/templates/entete.inc.php");
-        ajouter('gauche',"../vues/templates/gauche.inc.php");
-        ajouter('pied',"../vues/templates/pied.inc.php");
+        $this->ajouter('entete',"../vues/templates/entete.inc.php");
+        $this->ajouter('gauche',"../vues/templates/gauche.inc.php");
+        $this->ajouter('pied',"../vues/templates/pied.inc.php");
     }
 
     function afficher() {

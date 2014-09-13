@@ -2,17 +2,19 @@
 
 class C_Accueil extends C_ControleurGenerique {
 
-    function index() {
-        $lesCategories = new M_ListeCategories();
-        $this->vue->listeCateg = $lesCategories->getAll();
-        $this->vue->loginAuthentification = Session::getAuth('login');
-        $this->vue->titreVue = "LAFLEUR : Accueil";
-
-        $this->vue->entete = "../vues/templates/entete.inc.php";
-        $this->vue->gauche = "../vues/templates/gauche.inc.php";
-        $this->vue->pied = "../vues/templates/pied.inc.php";
-
-        $this->vue->centre = "../vues/accueil/templates/centre.inc.php";
+    /**
+     * controleur= accueil & action= index
+     * Afficher la page d'accueil
+     */
+    function defaut() {
+        $this->vue = new V_Vue("../vues/templates/template.inc.php");
+        $daoCateg = new M_DaoCategorie();
+        $daoCateg->connecter();
+        $this->vue->ajouter('listeCateg', $daoCateg->getAll());
+        $daoCateg->deconnecter();
+        $this->vue->ajouter('loginAuthentification',Session::getAuth('login'));
+        $this->vue->ajouter('titreVue',"LAFLEUR : Accueil");
+        $this->vue->ajouter('centre',"../vues/accueil/centre.inc.php");
 
         $this->vue->afficher();
     }
