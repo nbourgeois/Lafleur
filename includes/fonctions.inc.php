@@ -31,7 +31,7 @@ function __autoload($classe) {
     if (file_exists($chemin)) {
         require_once($chemin);
     } else {
-        exit('Le fichier <b>' . $chemin . '</b> n\'existe pas.');
+        exit('Pb autoload : Le fichier <b>' . $chemin . '</b> n\'existe pas.');
     }
 }
 
@@ -72,21 +72,5 @@ function debug_query($query, $param) {
      echo '<p>' . $query . '</p>';
 }
 
-/**
- * getRequest
- * Lire la valeur d'un paramètre de l'URL (GET) ou d'un formulaire (POST)
- * @param string $nomParametre : nom du paramètre à lire GET ou POST 
- * @param string $valeurDefaut : valeur par défaut s'il n'est pas défini
- * @return string : valeur lue ou bien par défaut
- */
-function getRequest($nomParametre, $valeurDefaut) {
-    $valeurParametre= null;
-    if (isset($_REQUEST["$nomParametre"])) {
-        $valeurParametre = $_REQUEST["$nomParametre"];
-    } else {
-        $valeurParametre = $valeurDefaut;
-    }
-    return $valeurParametre;
-}
 
 
