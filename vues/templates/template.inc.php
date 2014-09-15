@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="../vues/css/styleLargeurFixe.css" />
+        <link rel="stylesheet" href="../vues/css/styleLargeurVariable.css" />
         <title><?php echo $this->lire('titreVue'); ?></title>
     </head>
     <body>
