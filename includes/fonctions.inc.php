@@ -1,4 +1,7 @@
 <?php
+
+define('RACINE', "..");
+
 /**
  * __autoload
  * @param string $classe : charge une classe à la demande
@@ -7,24 +10,24 @@ function __autoload($classe) {
     $suffixe = substr($classe, 0, 2);
     switch ($suffixe) {
         case "C_" :
-            $chemin = "../controleurs/";
+            $chemin = RACINE . "/controleurs/";
             break;
         case "M_" :
             $sousSuffixe = substr($classe, 2, 3);
             switch ($sousSuffixe) {
                 case "Dao" :
-                    $chemin = "../modeles/dao/";
+                    $chemin = RACINE . "/modeles/dao/";
                     break;
                 default :
-                    $chemin = "../modeles/metier/";
-                    break;                   
+                    $chemin = RACINE . "/modeles/metier/";
+                    break;
             }
             break;
         case "V_" :
-            $chemin = "../vues/";
+            $chemin = RACINE . "/vues/";
             break;
         default :
-            $chemin = "../includes/classes/";
+            $chemin = RACINE . "/includes/classes/";
             break;
     }
     $chemin = $chemin . $classe . '.class.php';
