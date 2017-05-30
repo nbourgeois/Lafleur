@@ -1,8 +1,8 @@
 <?php
 // Constantes globales
 define("NOM_VERSION", "Lafleur MVC Objet");
-define("NUM_VERSION", "2.0");
-define("DESIGNATION_VERSION","12/09/2014 - MVC-objet - Sessions-objet");
+define("NUM_VERSION", "2.1");
+define("DESIGNATION_VERSION","30/05/2017 - MVC-objet - Sessions-objet -révision de test");
 
 /******************************************************************************
  * 
